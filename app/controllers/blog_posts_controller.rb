@@ -38,29 +38,22 @@ class BlogPostsController < ApplicationController
     end
   end
 
-def destroy
-#@blog_posts = BlogPost.find(params[:id])
-@blog_posts.destroy
-redirect_to articles_path
-    
-end
+  def destroy
+    #@blog_posts = BlogPost.find(params[:id])
+    @blog_posts.destroy
+    redirect_to articles_path
+  end
 
 
   
 private
-def blog_post_params
-  params.require(:blog_post).permit(:title, :body, :published_at)
-end
-
-def set_blog_post
-  if user_signed_in?
-  @blog_posts = BlogPost.find(params[:id])
-  else
-    @blog_posts = BlogPost.published.find(params[:id])
+  def blog_post_params
+    params.require(:blog_post).permit(:title, :body, :published_at)
   end
 
-rescue ActiveRecord::RecordNotFound
-  redirect_to "/blog_posts"
-end
-
+  def set_blog_post
+    @blog_posts = user_signed_in? ? BlogPost.find(params[:id]) : @blog_posts = BlogPost.published.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    redirect_to "/blog_posts"
+  end
 end
