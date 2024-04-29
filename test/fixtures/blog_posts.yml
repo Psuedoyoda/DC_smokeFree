@@ -1,9 +1,16 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  title: MyString
+draft:
+  title: draft post
   body: MyText
+  published_at: null
 
-two:
-  title: MyString
+published:
+  title: published post
   body: MyText
+  published_at: <%= 1.year.ago%>
+
+scheduled:
+  title: scheduled post
+  body: MyText
+  published_at: <%= 1.year.from_now%>
