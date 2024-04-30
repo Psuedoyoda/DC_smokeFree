@@ -74,3 +74,5 @@ gem "foreman", "~> 0.88.1"
 
 gem "aws-sdk-s3", require: false
 
+
+gem "pagy", "~> 8.3"
