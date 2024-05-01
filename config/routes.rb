@@ -11,7 +11,11 @@ Rails.application.routes.draw do
   root "home_page#index"
 
 #blog posts and article creation (Simple)
-  resources :blog_posts
+  resources :blog_posts do
+    resource :cover_image, only: [:destroy], module: :blog_posts
+  end
+
+
   get "/articles", to: "blog_posts#index", as: :articles
 
   #My hardcoded routes (Complex)
