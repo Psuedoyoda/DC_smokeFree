@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   #root "blog_posts#index"
   root "home_page#index"
+  
 
 #blog posts and article creation (Simple)
   resources :blog_posts do
@@ -17,7 +18,9 @@ Rails.application.routes.draw do
 
 
   get "/articles", to: "blog_posts#index", as: :articles
-
+  get "/privacy policy", to: "privacy#index", as: :privacy
+  get "/terms_of_use", to: "tos_page#index", as: :tou
+  get "/about_us", to: "about_us#index", as: :about_page
   #My hardcoded routes (Complex)
   #get "/articles/new", to: "blog_posts#new", as: :new_article
  

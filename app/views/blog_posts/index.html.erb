@@ -1,5 +1,7 @@
-<h1> This is my article home page: </h1>
-
+<div>
+<h1 class= "font-bold text-4xl text-blue-500"> SmokeFree Stories </h1>
+<p> Find quitting stories, inspirational posts, and new research here! </p>
+</div>
 
 <% @blog_posts.each do |blog_post|%>
 <%= image_tag blog_post.cover_image if blog_post.cover_image.present?%>

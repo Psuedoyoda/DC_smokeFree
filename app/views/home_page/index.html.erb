@@ -1,1 +1,227 @@
-<h1> This is the home page!  </h1>
+<!-- Hero Section -->
+
+<section class="parallax flex items-center justify-center text-center text-white">
+<div>
+    <h1 class="text-5xl font-bold mb-4 fade-in-text">Welcome to the Future</h1>
+    <p class="text-xl mb-6 max-w-md mx-auto fade-in-text" style="animation-delay: 1s;">Join us to explore innovative ways to enhance your well-being and environment.</p>
+    <div class="fade-in-text" style="animation-delay: 2s;">
+        <button onclick="changeContent()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded transition duration-300">Discover More</button>
+    </div>
+</div>
+</section>
+
+<section class="w-full gradient-background pb-32">
+    <div class="container mx-auto px-4 py-8 text-center">
+        <h1 class="text-4xl font-bold text-gray-800 mb-6">Welcome to Our Smokefree Community</h1>
+        <p class="text-lg text-gray-600">
+            Join us in creating a healthier environment with resources and support designed to help you succeed on your journey to being smokefree.
+        </p>
+    </div>
+
+    <!-- Call to Action Section/ check out our blog section -->
+
+    <div class= "flex justify-center container mx-auto py-12">
+        <!-- Content for Smokefree Stories will go here -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            
+        
+        <!-- Existing Example blog post entry -->
+            
+        
+        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+            <%= image_tag 'Inspire', alt: 'Latest Research', class: 'w-full h-32 object-cover' %>
+                <div class="px-6 py-4">
+                    <div class="text-gray-700 font-bold text-xl mb-2">Inspiring Journey</div>
+                    <p class="text-gray-700 text-base">
+                        Read about the inspiring journey of individuals who have successfully quit smoking and transformed their lives...
+                    </p>
+                </div>
+                <div class="px-6 pt-4 pb-2">
+                    <a href="#" class="inline-block bg-blue-500 rounded-full px-3 py-1 text-sm font-semibold text-white mr-2 mb-2 hover:bg-blue-700">Read More</a>
+                </div>
+            </div>
+
+            <!-- New Blog Post: Personal Anecdotes and Help -->
+
+            <div class="max-w-sm rounded overflow-hidden shadow-lg"><%= image_tag 'insights', alt: 'Latest Research', class: "w-full h-32 object-cover"%>
+                
+                <div class="px-6 py-4">
+                    <div class="text-gray-700 font-bold text-xl mb-2">Personal Insights</div>
+                    <p class="text-gray-700 text-base">
+                        Discover personal anecdotes, creative ideas, and practical advice to empower your smoke-free journey...
+                    </p>
+                </div>
+                <div class="px-6 pt-4 pb-2">
+                    <a href="#" class="inline-block bg-blue-500 rounded-full px-3 py-1 text-sm font-semibold text-white mr-2 mb-2 hover:bg-blue-700">Read More</a>
+                </div>
+            </div>
+            <div class="max-w-sm rounded overflow-hidden shadow-lg">
+              <%= image_tag 'Research pic.jpg', alt: 'Latest Research', class: 'w-full h-32 object-cover' %>
+            <div class="px-6 py-4">
+            <div class="text-gray-700 font-bold text-xl mb-2">Latest Research</div>
+              <p class="text-gray-700 text-base">
+                Stay updated with the latest research, data, and news in the field of smoking cessation and public health...
+              </p>
+            </div>
+              <div class="px-6 pt-4 pb-2">
+                <a href="#" class="inline-block bg-blue-500 rounded-full px-3 py-1 text-sm font-semibold text-white mr-2 mb-2 hover:bg-blue-700">Read More</a>
+              </div>
+            </div>
+            </div>
+    </section>
+
+
+    <!-- Comparison cards -->
+  
+    <!-- Comparison cards -->
+
+
+
+    <!-- Mobile CTA section -->
+    <body class="bg-gray-800 text-white">
+    <section class="pt-24 pb-12">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h1 class="text-4xl font-bold mb-4">Youth Vaping Prevention Campaign</h1>
+                <p class="text-lg mx-auto leading-relaxed max-w-xl">Explore our multimedia resources aimed at educating and empowering youth against vaping.</p>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <!-- YouTube -->
+                <div class="col-span-2 md:col-span-1 hover-grow">
+                    <div class="gradient-bga youtube-gradient rounded-lg shadow-lg overflow-hidden text-left">
+                        <img class="w-full h-32 object-cover" src="https://via.placeholder.com/720x400" alt="YouTube">
+                        <div class= "p-4">
+                            <h2 class="title-font text-lg font-medium mb-1">YouTube</h2>
+                            <p class="text-sm">Watch our engaging videos filled with practical advice and stories.</p>
+                            <a href="https://www.youtube.com/yourChannel" class="mt-2 text-red-200 inline-flex items-center">Watch Videos
+                                <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
+                                    <path d="M5 12h14M12 5l7 7-7 7"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- TikTok -->
+                <div class="col-span-2 md:col-span-1 hover-grow">
+                    <div class="bg-gradient-to-tr from-purple-500 to-purple-800 rounded-lg overflow-hidden shadow-lg transition duration-300">
+                        <img class="w-full h-32 object-cover" src="https://via.placeholder.com/720x400" alt="TikTok">
+                        <div class= "p-4">
+                            <h2 class="title-font text-lg font-medium mb-1">TikTok</h2>
+                            <p class="text-sm">Engage with our creative content aimed at spreading awareness about vaping prevention.</p>
+                            <a href="https://www.tiktok.com/@yourUsername" class="mt-2 text-blue-200 inline-flex items-center">Watch Now
+                                <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
+                                    <path d="M5 12h14M12 5l7 7-7 7"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Podcast -->
+                <div class="col-span-2 md:col-span-1 hover-grow">
+                    <div class="gradient-bga bg-gradient-to-tr from-green-500 to-green-800 rounded-lg overflow-hidden shadow-lg transition duration-300 text-left">
+                        <img class="w-full h-32 object-cover" src="https://via.placeholder.com/720x400" alt="Podcast">
+                        <div class= "p-4">
+                            <h2 class="title-font text-lg font-medium mb-1">Podcasts</h2>
+                              
+                            <h2 class="title-font text-lg font-medium mb-1 flex items-center justify-center">
+                            <p class="text-sm">Listen to our in-depth discussions on the impacts of vaping and ways to prevent it.</p>
+                            <a href="https://www.spotify.com/yourPodcast" class="mt-2 text-orange-200 inline-flex items-center">Listen Now
+                                <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
+                                    <path d="M5 12h14M12 5l7 7-7 7"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Composite Social Media Icon Tile -->
+                <div class="col-span-2 md:col-span-1 hover-grow">
+                    <a href="https://linktr.ee/yourSocialMediaHub" class="block gradient-bga social-gradient rounded-lg shadow-lg overflow-hidden text-center">
+                        <div class="flex justify-center items-center space-x-2">
+                            <!-- Multiple icons can be used here -->
+                            <svg class="w-8 h-8 fill-current" viewBox="0 0 24 24"><path d="https://via.placeholder.com/720x400"/></svg>
+                            <svg class="w-8 h-8 fill-current" viewBox="0 0 24 24"><path d="https://via.placeholder.com/720x400"/></svg>
+                        </div>
+                        <span class="p-4 block text-l font-semibold">More Social Channels</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+    <!-- Mobile CTA section -->
+    
+
+        <section class="bg-gray-100 py-12 px-4">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-semibold text-gray-800 mb-6">In-depth Insights and Stories</h2>
+            <div class="space-y-6 text-gray-600">
+                <p class="text-lg leading-relaxed">
+                    Delve into our extensive library of articles and resources that provide you with deep insights into the world of smoke-free living. Whether you're a newcomer seeking guidance or a seasoned individual looking for advanced tips, our resources cater to all levels of experience.
+                </p>
+                <p class="text-lg leading-relaxed">
+                    Each article is crafted to not only inform but also to inspire and motivate you on your journey towards a healthier lifestyle. Explore topics ranging from the basic principles of quitting smoking to comprehensive strategies that help manage cravings and avoid relapse.
+                </p>
+                <p class="text-lg leading-relaxed">
+                    Our content is continuously updated by experts and includes the latest research and success stories from around the globe. This ensures that you have access to the most effective and current information available.
+                </p>
+                <h3 class="text-2xl font-semibold text-gray-800 mt-8 mb-4">Featured Articles</h3>
+                <ul class="list-disc pl-5">
+                    <li class="mb-2">Understanding Nicotine Withdrawal: Symptoms and Coping Strategies</li>
+                    <li class="mb-2">The Role of Support Groups in Quitting Smoking</li>
+                    <li class="mb-2">How to Create a Personalized Quit Plan</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+        <section class="text-gray-700 body-font bg-gray-100">
+        <div class="container px-5 py-24 mx-auto">
+            <div class="flex flex-wrap -mx-4">
+                <!-- Smokefree Pregnancy Program Card -->
+                <div class="p-4 md:w-1/3">
+                    <div class="h-full bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300">
+                        <img class="lg:h-48 md:h-36 w-full object-cover object-center" src="https://via.placeholder.com/720x400" alt="Smokefree Pregnancy">
+                        <div class="p-6 hover-grow">
+                            <h2 class="title-font text-lg font-medium text-gray-900 mb-3">Smokefree Pregnancy Program</h2>
+                            <p class="leading-relaxed mb-3">Dedicated support for expectant mothers looking to quit smoking, offering resources tailored for a healthier pregnancy.</p>
+                            <a class="text-indigo-500 inline-flex items-center">Learn More
+                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
+                                    <path d="M5 12h14M12 5l7 7-7 7"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Smokefree Adults Program Card -->
+                <div class="p-4 md:w-1/3">
+                    <div class="h-full bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300">
+                        <img class="lg:h-48 md:h-36 w-full object-cover object-center" src="https://via.placeholder.com/720x400" alt="Smokefree Adults">
+                        <div class="p-6 hover-grow">
+                            <h2 class="title-font text-lg font-medium text-gray-900 mb-3">Smokefree Adults Program</h2>
+                            <p class="leading-relaxed mb-3">Empowering adults to quit smoking through evidence-based techniques and strong community support networks.</p>
+                            <a class="text-indigo-500 inline-flex items-center">Learn More
+                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
+                                    <path d="M5 12h14M12 5l7 7-7 7"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Smokefree Workplace Program Card -->
+                <div class="p-4 md:w-1/3">
+                    <div class="h-full bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300">
+                        <img class="lg:h-48 md:h-36 w-full object-cover object-center" src="https://via.placeholder.com/720x400" alt="Smokefree Workplace">
+                        <div class="p-6 hover-grow">
+                            <h2 class="title-font text-lg font-medium text-gray-900 mb-3">Smokefree Workplace Program</h2>
+                            <p class="leading-relaxed mb-3">Creating healthier work environments with tools and policies to encourage smoke-free workplaces and support employee health.</p>
+                            <a class="text-indigo-500 inline-flex items-center">Learn More
+                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
+                                    <path d="M5 12h14M12 5l7 7-7 7"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>

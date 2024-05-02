@@ -35,3 +35,296 @@
     }
   }
 }
+
+
+
+
+.navbar-gradient {
+  background: linear-gradient(270deg, #3a7bd5, #3a6073, #3a7bd5);
+  background-size: 200% 200%;
+  animation: gradientMove 8s ease infinite;
+
+}
+
+
+
+.gradient-bg {
+    background: linear-gradient(270deg, #4299e1, #63b3ed, #90cdf4, #a3bffa);
+    background-size: 800% 800%;
+    animation: gradient 8s ease infinite;
+}
+
+
+.hover\:shadow-underline:hover {
+  text-decoration: underline;
+  text-shadow: 0 2px 2px rgba(0, 0, 0, 0.25);
+}
+.font-montserrat {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.font-poppins {
+  font-family: 'Poppins', sans-serif;
+}
+
+.shadow-text-lg {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Shadow for text */
+}
+
+.shadow-lg {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* Tailwind standard large shadow */
+}
+
+.shadow-md {
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06); /* Tailwind standard medium shadow, for smaller elements */
+}
+.font-roboto-condensed {
+  font-family: 'Roboto Condensed', sans-serif;
+}
+.font-lora {
+  font-family: 'Lora', serif;
+}
+
+.font-open-sans {
+  font-family: 'Open Sans', sans-serif;
+}
+.font-raleway {
+  font-family: 'Raleway', sans-serif;
+}
+.font-merriweather {
+  font-family: 'Merriweather', serif;
+}
+.text-gradient {
+  background: linear-gradient(to right, #4c5754cc 10%, #4b90f0 50%, #139494 90%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline;
+}
+html, body {
+  min-height: 100vh;
+  margin: 0;
+}
+#content {
+  flex: 1 0 auto;
+}
+footer {
+  flex-shrink: 0;
+}
+
+.gradient-bg {
+  background: linear-gradient(to right, #9254d3, #2575fc);
+  
+}
+
+
+.animated-gradient-text {
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient 5s ease infinite;
+}
+
+@keyframes fadeInUp {
+  from {
+      opacity: 0;
+      transform: translateY(20px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+.fade-in-up {
+  animation: fadeInUp 1s ease-out forwards;
+}
+.hover-grow {
+  transition: transform 0.3s ease;
+}
+
+.button {
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  will-change: transform, box-shadow;
+}
+.button:hover {
+  transform: translateY(-3px); /* subtle lift */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* soft shadow for depth */
+}
+
+.gradient-text {
+  background: linear-gradient(to right, #6ee7b7, #3b82f6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.gradient-border {
+  background: linear-gradient(to right, #6ee7b7, #3b82f6);
+  padding: 1px;
+  border-radius: 0.5rem;
+}
+
+.gradient-background {
+  background: linear-gradient(to bottom, #ffffff 0%, #dddddd 100%);
+}
+
+
+.gradient-bgsection {
+/* Starting the gradient transition at 30% of the element's height */
+  background: linear-gradient(to bottom, #ffffff 30%, #dddddd 100%);
+}
+
+.hero-background {
+  background: linear-gradient(135deg, rgba(0,0,0,0.5) 0%, rgba(58,58,58,0.5) 100%), url('https://via.placeholder.com/1200x800') no-repeat center center;
+  background-size: cover;
+  clip-path: polygon(0 0, 100% 0%, 100% 75%, 0 100%);
+}
+.hero-text:hover {
+  text-shadow: 2px 2px 10px rgba(255, 255, 255, 0.5);
+  transform: scale(1.05);
+  transition: transform 0.3s ease-in-out, text-shadow 0.3s ease-in-out;
+}
+
+.parallax {
+  background-image: url('https://via.placeholder.com/1920x1080');
+  height: 100vh;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.fade-in-text {
+  animation: fadeIn 2s ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes fadeInUp {
+  from {
+      transform: translateY(10px);
+      opacity: 0;
+  }
+  to {
+      transform: translateY(0);
+      opacity: 1;
+  }
+}
+
+.tab-content {
+  display: none;
+}
+.tab-content.active {
+  display: block;
+}
+
+
+
+.animate-fade-in-down-bounce {
+  animation: fadeInDownBounce 1.2s ease-out forwards;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  transition: transform 0.3s ease;
+}
+.animate-fade-out {
+  animation: fadeOut 0.5s ease-out forwards;
+}
+
+
+
+
+.active-tab {
+  background-color: #2563eb; /* Blue-600 */
+  color: white;
+}
+.hidden-content {
+  display: none;
+}
+
+.hover-grow:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Custom animation keyframes for gradient */
+@keyframes gradientBG {
+  0% {
+      background-position: 0% 50%;
+  }
+  50% {
+      background-position: 100% 50%;
+  }
+  100% {
+      background-position: 0% 50%;
+  }
+}
+
+
+.animated-gradient {
+  background: linear-gradient(45deg, #6b73ff, #000dff, #0082ff, #00d4ff);
+  background-size: 600% 600%;
+  -webkit-animation: gradientBG 8s ease infinite;
+  animation: gradientBG 8s ease infinite;
+}
+
+.hover-animate-gradient:hover {
+  background: linear-gradient(45deg, #000dff, #6b73ff, #00d4ff, #0082ff);
+  background-size: 600% 600%;
+  -webkit-animation: gradientBG 8s ease infinite;
+  animation: gradientBG 8s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% {
+      background-position: 0% 50%;
+  }
+  50% {
+      background-position: 100% 50%;
+  }
+  100% {
+      background-position: 0% 50%;
+  }
+}
+
+.gradient-bga {
+  background-size: 200% 200%;
+  transition: transform 0.3s ease-in-out;
+}
+
+.youtube-gradient {
+  background: linear-gradient(45deg, #ff7676, #df49a6);
+}
+
+.tiktok-gradient {
+  background: linear-gradient(45deg, #05F, #5AB9EA);
+}
+
+.podcast-gradient {
+  background: linear-gradient(45deg, #ff9900, #cc6600);
+}
+
+.social-gradient {
+  background: linear-gradient(45deg, #833ab4, #fd1d1d, #fcb045);
+}
+
+.hover-animate {
+  animation: gradientShift 3s ease infinite;
+}
+
+.hover-grow:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease-in-out;
+}
+
+.hover-grow:hover .gradient-bg {
+  animation: gradientShift 3s ease infinite;
+}
+
+
+{
+  font-family: 'Nunito', sans-serif; /* Using a more refined font */
+}
