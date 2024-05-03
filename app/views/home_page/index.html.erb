@@ -1,76 +1,234 @@
-<!-- Hero Section -->
 
-<section class="parallax flex items-center justify-center text-center text-white">
-<div>
-    <h1 class="text-5xl font-bold mb-4 fade-in-text">Welcome to the Future</h1>
-    <p class="text-xl mb-6 max-w-md mx-auto fade-in-text" style="animation-delay: 1s;">Join us to explore innovative ways to enhance your well-being and environment.</p>
-    <div class="fade-in-text" style="animation-delay: 2s;">
-        <button onclick="changeContent()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded transition duration-300">Discover More</button>
+<title>DCSmokeFree Complete Page</title>
+<style>
+    body, html {
+        padding: 0;
+        margin: 0;
+        height: 100%;
+        overflow-x: hidden;
+    }
+    .gradient-bg {
+        background: linear-gradient(270deg, #ff0084, #33001b, #ffce00);
+        background-size: 600% 600%;
+        animation: gradientBG 15s ease infinite;
+        position: relative;
+        z-index: 10; /* Ensure navbar is above other content */
+        overflow: visible; /* Ensure dropdown is not cut off */
+    }
+    .navbar {
+        position: relative;
+        z-index: 1000; /* High z-index to ensure it's on top */
+    }
+    .navbar a, .dropbtn {
+        transition: color 0.3s ease;
+        color: white;
+    }
+    .navbar a:hover, .dropbtn:hover {
+        color: #ffd700; /* Gold color on hover */
+    }
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+        border-radius: 8px;
+        z-index: 1010; /* Ensures dropdown is above all content */
+    }
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        border-radius: 8px;
+    }
+    .dropdown-content a:hover {
+        background-color: #f1f1f1;
+    }
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+    .dropdown:hover .dropbtn {
+        color: #ffd700;
+    }
+    .programs-pink {
+        background-color: #ffadc7; /* Unique pink background for the Pregnancy Program */
+        border-radius: 8px;
+    }
+    .arrow-icon {
+        transition: transform 0.3s ease;
+    }
+    .dropdown:hover .arrow-icon {
+        transform: rotate(180deg); /* Rotate arrow on hover */
+    }
+    canvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1; /* Below the content but above the background */
+    }
+</style>
+
+<body>
+<div class="gradient-bg relative overflow-hidden">
+    <canvas id="smokeCanvas"></canvas>
+    <nav class="navbar text-white top-0 left-0 w-full z-10 relative p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="/" class="text-lg font-bold">DCSmokeFree</a>
+            <div class="flex space-x-4 items-center">
+                <a href="/" class="px-3 py-2 rounded">Home</a>
+                <a href="/about_us" class="px-3 py-2 rounded">About Us</a>
+                <div class="dropdown">
+                    <a href="#" class="dropbtn px-3 py-2 rounded flex items-center">
+                        Programs <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-2 arrow-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </a>
+                    <div class="dropdown-content">
+                        <a href="#" class="programs-pink">Pregnancy Program</a>
+                        <a href="#">Workplace Program</a>
+                        <a href="#">Adults Program</a>
+                    </div>
+                </div>
+                <a href="#contact" class="px-3 py-2 rounded">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="parallax flex items-center justify-center text-center text-white">
+        <div>
+            <h1 class="text-5xl font-bold mb-4 fade-in-text">Welcome to the Future</h1>
+            <p class="text-xl mb-6 max-w-md mx-auto fade-in-text" style="animation-delay: 1s;">Join us to explore innovative ways to enhance your well-being and environment.</p>
+            <div class="fade-in-text" style="animation-delay: 2s;">
+                <button onclick="changeContent()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded transition duration-300">Discover More</button>
+            </div>
+        </div>
+    </section>
+    <!-- Additional Section -->
+    <section class="w-full gradient-background pb-32">
+        <div class="container mx-auto px-4 py-8 text-center">
+            <h1 class="text-4xl font-bold text-gray-800 mb-6">Welcome to Our Smokefree Community</h1>
+            <p class="text-lg text-gray-600">
+                Join us in creating a healthier environment with resources and support designed to help you succeed on your journey to being smokefree.
+            </p>
+        </div>
+    </section>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/simplex-noise/2.4.0/simplex-noise.min.js"></script>
+<script>
+    const canvas = document.getElementById('smokeCanvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    let smokeData = [];
+    const simplex = new SimplexNoise();
+    const numParticles = 150;
+    const particleSize = 1.5;
+
+    function initSmoke() {
+        for (let i = 0; i < numParticles; i++) {
+            smokeData.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                size: Math.random() * particleSize + 0.5,
+                life: 0,
+                maxLife: Math.random() * 100 + 60
+            });
+        }
+    }
+
+    function drawSmoke() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        smokeData.forEach(p => {
+            p.x += simplex.noise2D(p.x, p.y) * 0.5;
+            p.y += simplex.noise2D(p.y, p.x) * 0.5 - 1;
+            p.life++;
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(255, 255, 255,' + (1 - p.life / p.maxLife) + ')';
+            ctx.fill();
+
+            if (p.life >= p.maxLife) {
+                p.x = Math.random() * canvas.width;
+                p.y = Math.random() * canvas.height;
+                p.life = 0;
+                p.maxLife = Math.random() * 100 + 60;
+            }
+        });
+        requestAnimationFrame(drawSmoke);
+    }
+
+    initSmoke();
+    drawSmoke();
+</script>
+</body>
+
+
+
+
+
+
+<!-- Call to Action Section/Check out our blog section -->
+<section class="bg-white">
+<div class="flex justify-center container mx-auto py-12">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+
+        <!-- Inspiring Journey B-->
+
+        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+            <img src="path_to_inspire_image.jpg" alt="Latest Research" class="w-full h-32 object-cover">
+            <div class="px-6 py-4">
+                <div class="text-gray-700 font-bold text-xl mb-2">Inspiring Journey</div>
+                <p class="text-gray-700 text-base">
+                    Read about the inspiring journey of individuals who have successfully quit smoking and transformed their lives...
+                </p>
+            </div>
+            <div class="px-6 pt-4 pb-2">
+                <a href="#" class="inline-block bg-blue-500 rounded-full px-3 py-1 text-sm font-semibold text-white mr-2 mb-2 hover:bg-blue-700">Read More</a>
+            </div>
+        </div>
+
+        <!-- Personal Anecdotes and Help Blog Post -->
+        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+            <img src="path_to_insights_image.jpg" alt="Personal Insights" class="w-full h-32 object-cover">
+            <div class="px-6 py-4">
+                <div class="text-gray-700 font-bold text-xl mb-2">Personal Insights</div>
+                <p class="text-gray-700 text-base">
+                    Discover personal anecdotes, creative ideas, and practical advice to empower your smoke-free journey...
+                </p>
+            </div>
+            <div class="px-6 pt-4 pb-2">
+                <a href="#" class="inline-block bg-blue-500 rounded-full px-3 py-1 text-sm font-semibold text-white mr-2 mb-2 hover:bg-blue-700">Read More</a>
+            </div>
+        </div>
+
+        <!-- Latest Research Blog Post -->
+        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+            <img src="path_to_research_image.jpg" alt="Latest Research" class="w-full h-32 object-cover">
+            <div class="px-6 py-4">
+                <div class="text-gray-700 font-bold text-xl mb-2">Latest Research</div>
+                <p class="text-gray-700 text-base">
+                    Stay updated with the latest research, data, and news in the field of smoking cessation and public health...
+                </p>
+            </div>
+            <div class="px-6 pt-4 pb-2">
+                <a href="#" class="inline-block bg-blue-500 rounded-full px-3 py-1 text-sm font-semibold text-white mr-2 mb-2 hover:bg-blue-700">Read More</a>
+            </div>
+        </div>
     </div>
 </div>
+
 </section>
-
-<section class="w-full gradient-background pb-32">
-    <div class="container mx-auto px-4 py-8 text-center">
-        <h1 class="text-4xl font-bold text-gray-800 mb-6">Welcome to Our Smokefree Community</h1>
-        <p class="text-lg text-gray-600">
-            Join us in creating a healthier environment with resources and support designed to help you succeed on your journey to being smokefree.
-        </p>
-    </div>
-
-    <!-- Call to Action Section/ check out our blog section -->
-
-    <div class= "flex justify-center container mx-auto py-12">
-        <!-- Content for Smokefree Stories will go here -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-            
-        
-        <!-- Existing Example blog post entry -->
-            
-        
-        <div class="max-w-sm rounded overflow-hidden shadow-lg">
-            <%= image_tag 'Inspire', alt: 'Latest Research', class: 'w-full h-32 object-cover' %>
-                <div class="px-6 py-4">
-                    <div class="text-gray-700 font-bold text-xl mb-2">Inspiring Journey</div>
-                    <p class="text-gray-700 text-base">
-                        Read about the inspiring journey of individuals who have successfully quit smoking and transformed their lives...
-                    </p>
-                </div>
-                <div class="px-6 pt-4 pb-2">
-                    <a href="#" class="inline-block bg-blue-500 rounded-full px-3 py-1 text-sm font-semibold text-white mr-2 mb-2 hover:bg-blue-700">Read More</a>
-                </div>
-            </div>
-
-            <!-- New Blog Post: Personal Anecdotes and Help -->
-
-            <div class="max-w-sm rounded overflow-hidden shadow-lg"><%= image_tag 'insights', alt: 'Latest Research', class: "w-full h-32 object-cover"%>
-                
-                <div class="px-6 py-4">
-                    <div class="text-gray-700 font-bold text-xl mb-2">Personal Insights</div>
-                    <p class="text-gray-700 text-base">
-                        Discover personal anecdotes, creative ideas, and practical advice to empower your smoke-free journey...
-                    </p>
-                </div>
-                <div class="px-6 pt-4 pb-2">
-                    <a href="#" class="inline-block bg-blue-500 rounded-full px-3 py-1 text-sm font-semibold text-white mr-2 mb-2 hover:bg-blue-700">Read More</a>
-                </div>
-            </div>
-            <div class="max-w-sm rounded overflow-hidden shadow-lg">
-              <%= image_tag 'Research pic.jpg', alt: 'Latest Research', class: 'w-full h-32 object-cover' %>
-            <div class="px-6 py-4">
-            <div class="text-gray-700 font-bold text-xl mb-2">Latest Research</div>
-              <p class="text-gray-700 text-base">
-                Stay updated with the latest research, data, and news in the field of smoking cessation and public health...
-              </p>
-            </div>
-              <div class="px-6 pt-4 pb-2">
-                <a href="#" class="inline-block bg-blue-500 rounded-full px-3 py-1 text-sm font-semibold text-white mr-2 mb-2 hover:bg-blue-700">Read More</a>
-              </div>
-            </div>
-            </div>
-    </section>
-
-
     <!-- Comparison cards -->
   
     <!-- Comparison cards -->
@@ -118,11 +276,10 @@
                 </div>
                 <!-- Podcast -->
                 <div class="col-span-2 md:col-span-1 hover-grow">
-                    <div class="gradient-bga bg-gradient-to-tr from-green-500 to-green-800 rounded-lg overflow-hidden shadow-lg transition duration-300 text-left">
+                    <div class="gradient-bga bg-gradient-to-tr from-green-500 to-green-800 rounded-lg overflow-hidden shadow-lg transition duration-300">
                         <img class="w-full h-32 object-cover" src="https://via.placeholder.com/720x400" alt="Podcast">
                         <div class= "p-4">
                             <h2 class="title-font text-lg font-medium mb-1">Podcasts</h2>
-                              
                             <h2 class="title-font text-lg font-medium mb-1 flex items-center justify-center">
                             <p class="text-sm">Listen to our in-depth discussions on the impacts of vaping and ways to prevent it.</p>
                             <a href="https://www.spotify.com/yourPodcast" class="mt-2 text-orange-200 inline-flex items-center">Listen Now
@@ -224,4 +381,4 @@
                 </div>
             </div>
         </div>
-    </section>
+    

@@ -146,10 +146,7 @@ footer {
   transition: box-shadow 0.3s ease, transform 0.3s ease;
   will-change: transform, box-shadow;
 }
-.button:hover {
-  transform: translateY(-3px); /* subtle lift */
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* soft shadow for depth */
-}
+
 
 .gradient-text {
   background: linear-gradient(to right, #6ee7b7, #3b82f6);
@@ -325,6 +322,15 @@ footer {
 }
 
 
-{
-  font-family: 'Nunito', sans-serif; /* Using a more refined font */
+
+
+
+.contact-button:hover {
+  transform: scale(1.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.button:hover {
+  transform: translateY(-3px); /* subtle lift */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* soft shadow for depth */
 }
