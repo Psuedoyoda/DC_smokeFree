@@ -1,0 +1,676 @@
+<title>DCSmokeFree Complete Page</title>
+<style>
+    body, html {
+        padding: 0;
+        margin: 0;
+        height: 100%;
+        overflow-x: hidden;
+    }
+    .gradient-bg {
+    background: linear-gradient(270deg, #6a11cb 0%, #2575fc 100%); /* From deep violet to bright blue */
+    background-size: 600% 600%;
+    animation: gradientBG 15s ease infinite;
+    position: relative;
+    z-index: 10; /* Ensure navbar is above other content */
+    overflow: visible; /* Ensure dropdown is not cut off */
+}
+    .navbar {
+        position: relative;
+        z-index: 1000; /* High z-index to ensure it's on top */
+    }
+    .navbar a, .dropbtn {
+        transition: color 0.3s ease;
+        color: white;
+    }
+    .navbar a:hover, .dropbtn:hover {
+        color: #333333; /* crimson color on hover */
+    }
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+        border-radius: 8px;
+        z-index: 1010; /* Ensures dropdown is above all content */
+    }
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        border-radius: 8px;
+    }
+    .dropdown-content a:hover {
+        background-color: #f1f1f1;
+    }
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+    .dropdown:hover .dropbtn {
+        color: #ffd700;
+    }
+    .programs-pink {
+        background-color: #ffadc7; /* Unique pink background for the Pregnancy Program */
+        border-radius: 8px;
+    }
+    .arrow-icon {
+        transition: transform 0.3s ease;
+    }
+    .dropdown:hover .arrow-icon {
+        transform: rotate(180deg); /* Rotate arrow on hover */
+    }
+    canvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1; /* Below the content but above the background */
+    }
+    @keyframes popIn {
+        0% {
+            transform: scale(0.5);
+            opacity: 0;
+        }
+        85% {
+            transform: scale(1.05);
+            opacity: 1;
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+    .stat-number {
+        font-size: 3rem; /* Larger font size for more impact */
+        font-weight: bold;
+        color: #4a90e2; /* Color matching the bar for consistency */
+        animation: popIn 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; /* Increased duration from 0.8s to 1s */
+    }
+    .stat-bar {
+        height: 10px; /* Thicker bar for better visibility */
+        background-color: #4a90e2;
+        width: 0;
+        animation: grow 2.5s ease-out forwards; /* Increased duration from 2s to 2.5s */
+        margin-top: 8px; /* Spacing between text and bar */
+    }
+    .stat-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .stat-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2); /* Elevated shadow on hover for a lifting effect */
+    }
+</style>
+
+<body>
+<div class="gradient-bg relative overflow-hidden">
+    <canvas id="smokeCanvas"></canvas>
+    <nav class="navbar text-white top-0 left-0 w-full z-10 relative p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="/" class="text-lg font-bold">DCSmokeFree</a>
+            <div class="flex space-x-4 items-center">
+                <a href="/" class="px-3 py-2 rounded">Home</a>
+                <a href="/about_us" class="px-3 py-2 rounded">About Us</a>
+                <div class="dropdown">
+                    <a href="#" class="dropbtn px-3 py-2 rounded flex items-center">
+                        Programs <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-2 arrow-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </a>
+                    <div class="dropdown-content">
+                        <a href="#" class="programs-pink">Pregnancy Program</a>
+                        <a href="#">Workplace Program</a>
+                        <a href="#">Adults Program</a>
+                    </div>
+                </div>
+                <a href="#contact" class="px-3 py-2 rounded">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+
+
+    <!-- Hero Section -->
+  <style>
+        .hero-background {
+            background-image: url('https://example.com/about-us-background.jpg'); /* Replace with your own image URL */
+            background-size: cover;
+            background-position: center;
+            height: 72vh; /* Full height of the viewport */
+            display: flex;
+            align-items: center; /* Vertical center alignment */
+            justify-content: center; /* Horizontal center alignment */
+            text-align: center; /* Text aligned to the center */
+            color: white; /* Text color for contrast */
+            position: relative; /* Needed for overlay */
+        } 
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+
+<body>
+    <div class="hero-background">
+        <div class="background-overlay"></div> <!-- Overlay for text contrast -->
+        <div class="content">
+            <h1 class="text-4xl font-bold mb-4">About DCSmokeFree</h1>
+            <p class="text-xl mb-6">Discover our journey towards creating a smoke-free future and learn about our core values and the dedicated team behind our initiatives.</p>
+            <a href="#mission" <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded">Our Mission</button> </a>
+        </div>
+    </div>
+
+
+<div class="container p-4 py-12">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+            <!-- Statistic Block -->
+            <div class="stat-card px-6 py-8 shadow-md rounded-lg bg-white hover:bg-gray-50">
+                <div class="stat-number" style="animation-delay: 0.3s;">1,000+</div>
+                <p class="text-xl mt-2">Successful Quits</p>
+                <div class="stat-bar" style="animation-delay: 0.8s;"></div>
+            </div>
+            <!-- Statistic Block -->
+            <div class="stat-card px-6 py-8 shadow-md rounded-lg bg-white hover:bg-gray-50">
+                <div class="stat-number" style="animation-delay: 0.6s;">500+</div>
+                <p class="text-xl mt-2">Workshops Held</p>
+                <div class="stat-bar" style="animation-delay: 1.1s;"></div>
+            </div>
+            <!-- Statistic Block -->
+            <div class="stat-card px-6 py-8 shadow-md rounded-lg bg-white hover:bg-gray-50">
+                <div class="stat-number" style="animation-delay: 0.9s;">300%</div>
+                <p class="text-xl mt-2">Increase in Engagement</p>
+                <div class="stat-bar" style="animation-delay: 1.4s;"></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+
+
+
+    <!-- Our mission Section -->
+    <style>
+        .mission-background {
+            background-color: #f0f0f0; /* Light grey background for contrast */
+            padding: 4rem 0; /* Ample padding for visual space */
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto; /* Centering the container */
+            padding: 0 2rem; /* Padding on smaller screens */
+        }
+    </style>
+
+    <body>
+    <div id="mission">
+    <div class="mission-background">
+        <div class="container">
+            <h2 class="text-3xl font-bold text-center mb-6">Our Mission</h2>
+            <p class="text-xl text-gray-700 text-center mb-4">
+                At DCSmokeFree, our mission is to empower individuals and communities to lead smoke-free lives through education, resources, and support. We believe in making a healthier, smoke-free environment accessible to everyone.
+            </p>
+            <div class="text-center">
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded shadow-md">Learn More About Our Programs</button>
+            </div>
+        </div>
+    </div>
+    </div>
+    </body>
+</div>
+
+<!-- History section -->
+
+
+<body class="bg-gray-100">
+    <div class="container mx-auto px-6 py-12">
+        <h1 class="text-4xl font-bold text-center p-4">Our History</h1>
+        <div class="relative">
+            <ul class="timeline">
+                <li class="mb-8 ml-0 md:ml-12">
+                    <div class="flex items-center">
+                        <div class="p-3 rounded-lg bg-blue-500 text-white mr-4">2019</div>
+                        <div class="bg-white p-4 rounded-lg shadow">
+                            <h3 class="font-semibold text-lg">Founded</h3>
+                            <p>We began our journey with a small team dedicated to promoting smoke-free environments.</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="mb-8 ml-0 md:ml-12">
+                    <div class="flex items-center">
+                        <div class="p-3 rounded-lg bg-green-500 text-white mr-4">2020</div>
+                        <div class="bg-white p-4 rounded-lg shadow">
+                            <h3 class="font-semibold text-lg">Major Milestone</h3>
+                            <p>A year later and we passed Douglas County's first smoke-free event's downtown policy.</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="mb-8 ml-0 md:ml-12">
+                    <div class="flex items-center">
+                        <div class="p-3 rounded-lg bg-purple-500 text-white mr-4">2023</div>
+                        <div class="bg-white p-4 rounded-lg shadow">
+                            <h3 class="font-semibold text-lg">Program Expansion</h3>
+                            <p>We launched the first-ever SmokeFree Pregnancy Program - supporting pregnant moms and their journey to quit smoking.</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="mb-8 ml-0 md:ml-12">
+                    <div class="flex items-center">
+                        <div class="p-3 rounded-lg bg-red-500 text-white mr-4">2024</div>
+                        <div class="bg-white p-4 rounded-lg shadow">
+                            <h3 class="font-semibold text-lg">DCSmokeFree Campaign Launch</h3>
+                            <p>We started our first SmokeFree campaign designed to inform our douglas county community about the harms of smoking.</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="ml-0 md:ml-12">
+                    <div class="flex items-center">
+                        <div class="p-3 rounded-lg bg-yellow-500 text-white mr-4">Today</div>
+                        <div class="bg-white p-4 rounded-lg shadow">
+                            <h3 class="font-semibold text-lg">Continuing Impact</h3>
+                            <p>DCSmokeFree continues to promote a SmokeFree Douglas county, lead initiatives statewide, promoting a healthier, smoke-free future for all.</p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+<!-- Testimonials section -->
+
+<style>
+        .testimonial-quote {
+            font-style: italic; /* Italicize quotes */
+            color: #555; /* Dark grey color for contrast */
+        }
+        .author {
+            margin-top: 1rem; /* Space above the author's name */
+            font-weight: bold; /* Bold for emphasis */
+            color: #333; /* Slightly darker color for name */
+        }
+    </style>
+
+<body>
+    <div class="bg-gray-100 py-16"> <!-- Light grey background and consistent vertical padding -->
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-6">What People Are Saying</h2>
+            <div class="flex flex-wrap justify-center">
+                <div class="card w-full md:w-1/3 p-4 m-2 bg-white shadow transition ease-in-out duration-300 hover:shadow-lg hover:translate-y-1">
+                    <p class="testimonial-quote">"Thanks to DCSmokeFree, my family and I live in a healthier environment. Their support and resources were invaluable in helping us quit smoking."</p>
+                    <p class="author">- Jane Doe, Beneficiary</p>
+                </div>
+                <div class="card w-full md:w-1/3 p-4 m-2 bg-white shadow transition ease-in-out duration-300 hover:shadow-lg hover:translate-y-1">
+                    <p class="testimonial-quote">"DCSmokeFree's programs in schools have educated my kids about the risks of smoking. We are grateful for their dedication."</p>
+                    <p class="author">- John Smith, Parent</p>
+                </div>
+                <div class="card w-full md:w-1/3 p-4 m-2 bg-white shadow transition ease-in-out duration-300 hover:shadow-lg hover:translate-y-1">
+                    <p class="testimonial-quote">"Their workplace initiatives have transformed our office into a smoke-free zone, promoting better health and productivity."</p>
+                    <p class="author">- Linda Grey, HR Manager</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+<!-- popup section -->
+
+
+
+
+<!-- Vision section -->
+
+
+   <style>
+        .highlight {
+            color: #4a90e2; /* Bright color for key terms */
+            font-weight: bold; /* Make highlighted terms bold */
+        }
+        .custom-bullet {
+            height: 10px;
+            width: 16px;
+            background-color: #4a90e2;
+            border-radius: 50%;
+            margin-right: 12px; /* Sufficient space between the bullet and text */
+            align-self: flex-start; /* Align bullet to the top of the flex container */
+            margin-top: 10px; /* Fine-tune alignment to top */
+        }
+        .list-item {
+            display: flex; /* Use flexbox for aligning bullet with text */
+            align-items: flex-start; /* Align items to the top of the flex container */
+            text-align: left; /* Ensure text alignment is consistent */
+            margin-bottom: 10px; /* Space between items */
+            font-size: 1.25rem; /* Adjust text size to match your design */
+        }
+    </style>
+
+<body>
+    <div class="bg-white py-16">
+        <div class="container mx-auto px-6 md:px-12 xl:px-24">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <div class="space-y-6">
+                    <h2 class="text-3xl font-bold">Our Vision for the Future</h2>
+                    <p class="text-xl">
+                        As we look to the future, <span class="highlight">sustainability</span> and <span class="highlight">innovation</span> are at the forefront of our strategy. Our vision is to expand our reach to more communities and influence global policies on smoke-free environments.
+                    </p>
+                    <p class="text-xl">
+                        We aim to integrate the latest <span class="highlight">technological advancements</span> to enhance our programs and campaigns, ensuring that every individual, irrespective of their background, has access to the resources they need to lead a healthy, smoke-free life.
+                    </p>
+                </div>
+                <div class="space-y-6">
+                    <h2 class="text-3xl font-bold">Strategic Goals</h2>
+                    <ul class="list-none">
+                        <li class="list-item"><span class="custom-bullet"></span>Launch an international awareness campaign to educate youth about the dangers of vaping.</li>
+                        <li class="list-item"><span class="custom-bullet"></span>Partner with technology firms to develop mobile applications that support smoking cessation.</li>
+                        <li class="list-item"><span class="custom-bullet"></span>Increase community engagement through workshops, seminars, and online forums.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+
+<!-- Our team section -->
+
+
+ <style>
+        .team-card {
+            perspective: 1000px;
+            width: 300px;
+            height: 400px;
+        }
+        .card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+        }
+        .card-front, .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .card-front {
+            background: #ffffff;
+            color: black;
+            z-index: 2;
+            transform: rotateY(0deg);
+        }
+        .card-back {
+            background: #313131;
+            color: white;
+            transform: rotateY(180deg);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .team-card:hover .card-inner {
+            transform: rotateY(180deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-gray-100 py-16">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-8">Meet Our Team</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Example team member -->
+                <div class="team-card mx-auto">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <img src="https://via.placeholder.com/300x400" alt="Team Member Jane Doe" style="width:100%; height:100%;">
+                        </div>
+                        <div class="card-back">
+                            <h3 class="text-xl font-bold mb-2">Jane Doe</h3>
+                            <p>Chief Executive Officer</p>
+                            <p>Passionate about public health and innovation.</p>
+                            <a href="#" class="text-blue-500 mt-4">Connect</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Example team member -->
+                <div class="team-card mx-auto">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <img src="https://via.placeholder.com/300x400" alt="Team Member John Smith" style="width:100%; height:100%;">
+                        </div>
+                        <div class="card-back">
+                            <h3 class="text-xl font-bold mb-2">John Smith</h3>
+                            <p>Director of Operations</p>
+                            <p>Dedicated to operational excellence and team growth.</p>
+                            <a href="#" class="text-blue-500 mt-4">Connect</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hiring soon card -->
+                <div class="team-card mx-auto">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <img src="https://via.placeholder.com/300x400" alt="We're Hiring" style="width:100%; height:100%;">
+                        </div>
+                        <div class="card-back">
+                            <h3 class="text-xl font-bold mb-2">Join Our Team!</h3>
+                            <p>We're expanding and looking for passionate individuals to join us. Stay tuned for upcoming positions!</p>
+                            <a href="/careers" class="text-blue-500 mt-4">Careers Page</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+<!-- Partners section -->
+
+
+<body>
+    <div class="bg-white py-16">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-6">Our Partners</h2>
+            <p class="text-xl mb-6">We are proud to collaborate with leading organizations to further our mission:</p>
+            <div class="flex flex-wrap justify-center items-center gap-8">
+                <!-- Partner logos -->
+                <div class="w-48">
+                    <img src="https://example.com/logo1.png" alt="Partner 1 Logo" class="mx-auto grayscale hover:grayscale-0 transition duration-300">
+                </div>
+                <div class="w-48">
+                    <img src="https://example.com/logo2.png" alt="Partner 2 Logo" class="mx-auto grayscale hover:grayscale-0 transition duration-300">
+                </div>
+                <div class="w-48">
+                    <img src="https://example.com/logo3.png" alt="Partner 3 Logo" class="mx-auto grayscale hover:grayscale-0 transition duration-300">
+                </div>
+                <div class="w-48">
+                    <img src="https://example.com/logo4.png" alt="Partner 4 Logo" class="mx-auto grayscale hover:grayscale-0 transition duration-300">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+
+<!-- FAQ section -->
+
+  <style>
+        /* Optional: for smooth rotation of the arrow */
+        .rotate {
+            transition: transform 0.2s ease-in-out;
+        }
+    </style>
+
+<body class="bg-gray-50 font-sans leading-normal tracking-normal">
+    <div class="container mx-auto px-4 py-8 p-4">
+        <div class="max-w-3xl mx-auto bg-white rounded-lg shadow overflow-hidden">
+            <div class="p-5">
+                <h2 class="text-xl font-semibold text-center text-gray-800 mb-4">Frequently Asked Questions</h2>
+                <div id="accordion">
+                    <!-- FAQ Item -->
+                    <div class="mb-2">
+                        <button class="faq-question w-full flex justify-between items-center p-3 text-gray-800 bg-gray-100 rounded text-left focus:outline-none focus-visible:ring focus-visible:ring-purple-300 focus-visible:ring-opacity-75">
+                            What is DCSmokeFree?
+                            <span class="faq-icon transition-transform transform">&#9660;</span>
+                        </button>
+                        <div class="faq-answer hidden p-3 text-gray-600">
+                            DCSmokeFree is a community-driven initiative focused on promoting tobacco-free living in Douglas County. We provide resources and support for quitting smoking and educate the community about the health risks associated with tobacco use.
+                        </div>
+                    </div>
+                    <!-- Another FAQ Item -->
+                    <div class="mb-2">
+                        <button class="faq-question w-full flex justify-between items-center p-3 text-gray-800 bg-gray-100 rounded text-left focus:outline-none focus-visible:ring focus-visible:ring-blue-300 focus-visible:ring-opacity-75">
+                            Is DCSmokeFree's service's free to the public?
+                            <span class="faq-icon transition-transform transform">&#9660;</span>
+                        </button>
+                        <div class="faq-answer hidden p-3 text-gray-600">
+                            Yes, all of our programs, including educational sessions, quit programs, and support groups, are provided free of charge to help our community members lead healthier lives without tobacco.
+                        </div>
+                    </div>
+                    <!-- More FAQ Items can be added following the same pattern -->
+                    <div class="mb-2">
+                        <button class="faq-question w-full flex justify-between items-center p-3 text-gray-800 bg-gray-100 rounded text-left focus:outline-none focus-visible:ring focus-visible:ring-blue-300 focus-visible:ring-opacity-75">
+                            What types of programs does DCSmokeFree offer?
+                            <span class="faq-icon transition-transform transform">&#9660;</span>
+                        </button>
+                        <div class="faq-answer hidden p-3 text-gray-600">
+                            We offer a variety of programs aimed at different demographics, including smoking cessation programs for pregnant moms, adults, familes, youth, support groups, and educational programs for schools to prevent youth from starting to smoke, and community outreach to raise awareness about the dangers of smoking.
+                        </div>
+                    </div>
+                    <div class="mb-2">
+                        <button class="faq-question w-full flex justify-between items-center p-3 text-gray-800 bg-gray-100 rounded text-left focus:outline-none focus-visible:ring focus-visible:ring-blue-300 focus-visible:ring-opacity-75">
+                            Can I volunteer at DCSmokeFree?
+                            <span class="faq-icon transition-transform transform">&#9660;</span>
+                        </button>
+                        <div class="faq-answer hidden p-3 text-gray-600">
+                        Absolutely! We rely on the dedication of volunteers to run our programs and campaigns. Volunteers can help in various ways, from participating in community outreach efforts to providing administrative support at our events. Reach out to us at mail@douglaspublichealthnetwork.org
+                        </div>
+                    </div>
+                    <div class="mb-2">
+                        <button class="faq-question w-full flex justify-between items-center p-3 text-gray-800 bg-gray-100 rounded text-left focus:outline-none focus-visible:ring focus-visible:ring-blue-300 focus-visible:ring-opacity-75">
+                            What resources are available for someone trying to quit smoking?
+                            <span class="faq-icon transition-transform transform">&#9660;</span>
+                        </button>
+                        <div class="faq-answer hidden p-3 text-gray-600">
+                        DCSmokeFree offers quit classes, support groups, access to nicotine replacement therapies, and educational materials. We also have provide a helpline that provides support and information about quitting smoking.
+                        </div>
+                    </div>
+                    <div class="mb-2">
+                        <button class="faq-question w-full flex justify-between items-center p-3 text-gray-800 bg-gray-100 rounded text-left focus:outline-none focus-visible:ring focus-visible:ring-blue-300 focus-visible:ring-opacity-75">
+                            How does DCSmokeFree engage with the community?
+                            <span class="faq-icon transition-transform transform">&#9660;</span>
+                        </button>
+                        <div class="faq-answer hidden p-3 text-gray-600">
+                        We engage with the community through workshops, educational campaigns, public health fairs, and collaboration with local schools and businesses to promote a smoke-free environment.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.faq-question').forEach(item => {
+            item.addEventListener('click', () => {
+                const answer = item.nextElementSibling;
+                const icon = item.querySelector('.faq-icon');
+                answer.classList.toggle('hidden');
+                icon.style.transform = icon.style.transform === 'rotate(180deg)' ? 'rotate(0deg)' : 'rotate(180deg)';
+            });
+        });
+    </script>
+</body>
+
+
+<!-- Values section -->
+
+<body>
+    <div class="bg-gray-100 py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-8">Our Core Values</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white shadow rounded-lg p-6 text-center">
+                    <h3 class="text-xl font-semibold mb-4">Integrity</h3>
+                    <p>Every action we take is guided by honesty and ethical principles. We believe that being transparent with our community and stakeholders builds trust and accountability.</p>
+                </div>
+                <div class="bg-white shadow rounded-lg p-6 text-center">
+                    <h3 class="text-xl font-semibold mb-4">Innovation</h3>
+                    <p>We strive to lead with innovation by implementing cutting-edge approaches to public health challenges, ensuring we stay at the forefront of change and progress.</p>
+                </div>
+                <div class="bg-white shadow rounded-lg p-6 text-center">
+                    <h3 class="text-xl font-semibold mb-4">Community</h3>
+                    <p>At the heart of our mission is a commitment to serve our community. We work closely with local groups to ensure that our programs and initiatives meet their needs and foster strong relationships.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+
+<!-- Smoke/partical animation script section -->
+
+
+<script>
+    const canvas = document.getElementById('smokeCanvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    let smokeData = [];
+    const simplex = new SimplexNoise();
+    const numParticles = 150;
+    const particleSize = 1.5;
+
+    function initSmoke() {
+        for (let i = 0; i < numParticles; i++) {
+            smokeData.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                size: Math.random() * particleSize + 0.5,
+                life: 0,
+                maxLife: Math.random() * 100 + 60
+            });
+        }
+    }
+
+    function drawSmoke() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        smokeData.forEach(p => {
+            p.x += simplex.noise2D(p.x, p.y) * 0.5;
+            p.y += simplex.noise2D(p.y, p.x) * 0.5 - 1;
+            p.life++;
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(255, 255, 255,' + (1 - p.life / p.maxLife) + ')';
+            ctx.fill();
+
+            if (p.life >= p.maxLife) {
+                p.x = Math.random() * canvas.width;
+                p.y = Math.random() * canvas.height;
+                p.life = 0;
+                p.maxLife = Math.random() * 100 + 60;
+            }
+        });
+        requestAnimationFrame(drawSmoke);
+    }
+
+    initSmoke();
+    drawSmoke();
+</script>
+</body>
+
